@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PW Gulf · Teacher Voice</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; background-color: #f0f2f5; }
+    /* Custom radio styling to hide default input on 1-10 scales */
+    .scale-radio:checked + div { background-color: #0f766e; color: white; border-color: #0f766e; }
+  </style>
+</head>
+<body class="text-gray-800 antialiased py-10 px-4 sm:px-6">
+
+  <div class="max-w-3xl mx-auto">
+    <div class="mb-8">
+      <p class="text-xs font-bold text-teal-800 tracking-widest uppercase mb-2">PW Gulf · Teacher Voice</p>
+      <h1 class="text-4xl sm:text-5xl font-extrabold text-[#1a2e2b] tracking-tight">How is it really going?</h1>
+      
+      <div class="mt-6 bg-[#e6f4f1] border border-[#c1e6de] rounded-xl p-5 flex gap-4 text-[#1a4a40]">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+        </svg>
+        <p class="text-sm sm:text-base leading-relaxed">
+          <strong class="font-semibold">This survey is anonymous.</strong> We don't collect your name, email, sign-in, or device. The background questions below are optional and only used to group answers (e.g. by branch) — never to identify you.
+        </p>
+      </div>
+
+      <p class="mt-6 text-gray-600 text-lg">
+        Please be honest. The whole point is to hear what's working and what isn't. Takes about 5 minutes.
+      </p>
+    </div>
+
+    <form id="teacherSurveyForm" class="space-y-8">
+
+      <div class="bg-white rounded-2xl shadow-sm border border-gray-200 p-6 sm:p-8">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-8 h-8 rounded-full bg-teal-800 text-white flex items-center justify-center font-bold">i</div>
+          <h2 class="text-xl font-bold text-[#1a2e2b]">About you</h2>
+        </div>
+        <p class="text-sm text-gray-500 mb-6 -mt-4 ml-11">All optional. Kept broad on purpose so no one can be singled out.</p>
+
+        <div class="space-y-6 ml-0 sm:ml-11">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div>
+              <label class="block font-medium text-gray-800 mb-2">Which Region you mainly Teach at?</label>
+              <select id="region" name="Region" class="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-teal-700 outline-none transition">
+                <option value="">Select...</option>
+                <option value="GCC Online">GCC Online</option>
+                <option value="Saudi Offline">Saudi Offline</option>
+                <option value="Oman Offline">Oman Offline</option>
+                <option value="UAE Offline">UAE Offline</option>
+                <option value="Qatar Offline">Qatar Offline</option>
+              </select>
+            </div>
+            <div>
+              <label class="block font-medium text-gray-800 mb-2">Centre</label>
+              <select id="centre" name="Centre" disabled class="w-full border border-gray-300 rounded-lg p-3 bg-gray-50 focus:ring-2 focus:ring-teal-700 outline-none transition disabled:opacity-60">
+                <option value="">Select Region first...</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label class="block font-medium text-gray-800 mb-2">What subject(s) do you primarily teach? <span class="text-gray-400 font-normal">(optional)</span></label>
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+              <label class="border border-gray-200 rounded-lg p-3 flex items-center gap-3 cursor-pointer hover:bg-gray-50 transition">
+                <input type="checkbox" name="Subject" value="Physics" class="w-4 h-4 text-teal-700 focus:ring-teal-700 rounded border-gray-300"> <span>Physics</span>
+              </label>
+              <label class="border border-gray-200 rounded-lg p-3 flex items-center gap-3 cursor-pointer hover:bg-gray-50 transition">
+                <input type="checkbox" name="Subject" value="Chemistry" class="w-4 h-4 text-teal-700 focus:ring-teal-700 rounded border-gray-300"> <span>Chemistry</span>
+              </label>
+              <label class="border border-gray-200 rounded-lg p-3 flex items-center gap-3 cursor-pointer hover:bg-gray-50 transition">
+                <input type="checkbox" name="Subject" value="Maths" class="w-4 h-4 text-teal-700 focus:ring-teal-700 rounded border-gray-300"> <span>Maths</span>
+              </label>
+              <label class="border border-gray-200 rounded-lg p-3 flex items-center gap-3 cursor-pointer hover:bg-gray-50 transition">
+                <input type="checkbox" name="Subject" value="Biology" class="w-4 h-4 text-teal-700 focus:ring-teal-700 rounded border-gray-300"> <span>Biology</span>
+              </label>
+              <label class="border border-gray-200 rounded-lg p-3 flex items-center gap-3 cursor-pointer hover:bg-gray-50 transition">
+                <input type="checkbox" name="Subject" value="Science Combined" class="w-4 h-4 text-teal-700 focus:ring-teal-700 rounded border-gray-300"> <span>Science Combined</span>
+              </label>
+            </div>
+          </div>
+
+          <div>
+            <label class="block font-medium text-gray-800 mb-2">How long have you worked at PW Gulf? <span class="text-gray-400 font-normal">(optional)</span></label>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+              <label class="border border-gray-200 rounded-lg p-3 flex items-center gap-3 cursor-pointer hover:bg-gray-50 transition">
+                <input type="radio" name="Tenure" value="Under 6 months" class="w-4 h-4 text-teal-700 focus:ring-teal-700 border-gray-300"> <span class="text-sm">Under 6 months</span>
+              </label>
+              <label class="border border-gray-200 rounded-lg p-3 flex items-center gap-3 cursor-pointer hover:bg-gray-50 transition">
+                <input type="radio" name="Tenure" value="6-12 months" class="w-4 h-4 text-teal-700 focus:ring-teal-700 border-gray-300"> <span class="text-sm">6–12 months</span>
+              </label>
+              <label class="border border-gray-200 rounded-lg p-3 flex items-center gap-3 cursor-pointer hover:bg-gray-50 transition">
+                <input type="radio" name="Tenure" value="1-2 years" class="w-4 h-4 text-teal-700 focus:ring-teal-700 border-gray-300"> <span class="text-sm">1–2 years</span>
+              </label>
+              <label class="border border-gray-200 rounded-lg p-3 flex items-center gap-3 cursor-pointer hover:bg-gray-50 transition">
+                <input type="radio" name="Tenure" value="2+ years" class="w-4 h-4 text-teal-700 focus:ring-teal-700 border-gray-300"> <span class="text-sm">2+ years</span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl shadow-sm border border-gray-200 p-6 sm:p-8">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-8 h-8 rounded-full bg-teal-800 text-white flex items-center justify-center font-bold">1</div>
+          <h2 class="text-xl font-bold text-[#1a2e2b]">Overall happiness</h2>
+        </div>
+
+        <div class="space-y-8 ml-0 sm:ml-11">
+          <div>
+            <label class="block font-medium text-gray-800 mb-3">How happy are you working at PW Gulf overall? <span class="text-teal-700">*</span></label>
+            <div class="flex flex-wrap sm:flex-nowrap gap-2 justify-between w-full">
+              <label class="cursor-pointer flex-1"><input type="radio" name="Overall_Happiness" value="1" required class="scale-radio hidden"><div class="h-10 sm:h-12 border border-gray-300 rounded flex justify-center items-center hover:bg-gray-50 transition">1</div></label>
+              <label class="cursor-pointer flex-1"><input type="radio" name="Overall_Happiness" value="2" class="scale-radio hidden"><div class="h-10 sm:h-12 border border-gray-300 rounded flex justify-center items-center hover:bg-gray-50 transition">2</div></label>
+              <label class="cursor-pointer flex-1"><input type="radio" name="Overall_Happiness" value="3" class="scale-radio hidden"><div class="h-10 sm:h-12 border border-gray-300 rounded flex justify-center items-center hover:bg-gray-50 transition">3</div></label>
+              <label class="cursor-pointer flex-1"><input type="radio" name="Overall_Happiness" value="4" class="scale-radio hidden"><div class="h-10 sm:h-12 border border-gray-300 rounded flex justify-center items-center hover:bg-gray-50 transition">4</div></label>
+              <label class="cursor-pointer flex-1"><input type="radio" name="Overall_Happiness" value="5" class="scale-radio hidden"><div class="h-10 sm:h-12 border border-gray-300 rounded flex justify-center items-center hover:bg-gray-50 transition">5</div></label>
+              <label class="cursor-pointer flex-1"><input type="radio" name="Overall_Happiness" value="6" class="scale-radio hidden"><div class="h-10 sm:h-12 border border-gray-300 rounded flex justify-center items-center hover:bg-gray-50 transition">6</div></label>
+              <label class="cursor-pointer flex-1"><input type="radio" name="Overall_Happiness" value="7" class="scale-radio hidden"><div class="h-10 sm:h-12 border border-gray-300 rounded flex justify-center items-center hover:bg-gray-50 transition">7</div></label>
+              <label class="cursor-pointer flex-1"><input type="radio" name="Overall_Happiness" value="8" class="scale-radio hidden"><div class="h-10 sm:h-12 border border-gray-300 rounded flex justify-center items-center hover:bg-gray-50 transition">8</div></label>
+              <label class="cursor-pointer flex-1"><input type="radio" name="Overall_Happiness" value="9" class="scale-radio hidden"><div class="h-10 sm:h-12 border border-gray-300 rounded flex justify-center items-center hover:bg-gray-50 transition">9</div></label>
+              <label class="cursor-pointer flex-1"><input type="radio" name="Overall_Happiness" value="10" class="scale-radio hidden"><div class="h-10 sm:h-12 border border-gray-300 rounded flex justify-center items-center hover:bg-gray-50 transition">10</div></label>
+            </div>
+            <div class="flex justify-between text-xs text-gray-500 mt-2">
+              <span>1 · Very unhappy</span><span>10 · Very happy</span>
+            </div>
+          </div>
+
+          <div>
+            <label class="block font-medium text-gray-800 mb-3">How likely are you to recommend PW Gulf as a place to work to a friend or colleague? <span class="text-teal-700">*</span></label>
+            <div class="flex flex-wrap sm:flex-nowrap gap-2 justify-between w-full">
+              <label class="cursor-pointer flex-1"><input type="radio" name="Likely_To_Recommend" value="1" required class="scale-radio hidden"><div class="h-10 sm:h-12 border border-gray-300 rounded flex justify-center items-center hover:bg-gray-50 transition">1</div></label>
+              <label class="cursor-pointer flex-1"><input type="radio" name="Likely_To_Recommend" value="2" class="scale-radio hidden"><div class="h-10 sm:h-12 border border-gray-300 rounded flex justify-center items-center hover:bg-gray-50 transition">2</div></label>
+              <label class="cursor-pointer flex-1"><input type="radio" name="Likely_To_Recommend" value="3" class="scale-radio hidden"><div class="h-10 sm:h-12 border border-gray-300 rounded flex justify-center items-center hover:bg-gray-50 transition">3</div></label>
+              <label class="cursor-pointer flex-1"><input type="radio" name="Likely_To_Recommend" value="4" class="scale-radio hidden"><div class="h-10 sm:h-12 border border-gray-300 rounded flex justify-center items-center hover:bg-gray-50 transition">4</div></label>
+              <label class="cursor-pointer flex-1"><input type="radio" name="Likely_To_Recommend" value="5" class="scale-radio hidden"><div class="h-10 sm:h-12 border border-gray-300 rounded flex justify-center items-center hover:bg-gray-50 transition">5</div></label>
+              <label class="cursor-pointer flex-1"><input type="radio" name="Likely_To_Recommend" value="6" class="scale-radio hidden"><div class="h-10 sm:h-12 border border-gray-300 rounded flex justify-center items-center hover:bg-gray-50 transition">6</div></label>
+              <label class="cursor-pointer flex-1"><input type="radio" name="Likely_To_Recommend" value="7" class="scale-radio hidden"><div class="h-10 sm:h-12 border border-gray-300 rounded flex justify-center items-center hover:bg-gray-50 transition">7</div></label>
+              <label class="cursor-pointer flex-1"><input type="radio" name="Likely_To_Recommend" value="8" class="scale-radio hidden"><div class="h-10 sm:h-12 border border-gray-300 rounded flex justify-center items-center hover:bg-gray-50 transition">8</div></label>
+              <label class="cursor-pointer flex-1"><input type="radio" name="Likely_To_Recommend" value="9" class="scale-radio hidden"><div class="h-10 sm:h-12 border border-gray-300 rounded flex justify-center items-center hover:bg-gray-50 transition">9</div></label>
+              <label class="cursor-pointer flex-1"><input type="radio" name="Likely_To_Recommend" value="10" class="scale-radio hidden"><div class="h-10 sm:h-12 border border-gray-300 rounded flex justify-center items-center hover:bg-gray-50 transition">10</div></label>
+            </div>
+            <div class="flex justify-between text-xs text-gray-500 mt-2">
+              <span>1 · Not at all</span><span>10 · Extremely</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl shadow-sm border border-gray-200 p-6 sm:p-8">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-8 h-8 rounded-full bg-teal-800 text-white flex items-center justify-center font-bold">2</div>
+          <h2 class="text-xl font-bold text-[#1a2e2b]">Academic Head</h2>
+        </div>
+
+        <div class="space-y-6 ml-0 sm:ml-11">
+          <div>
+            <label class="block font-medium text-gray-800 mb-2">Who is your Academic Head? <span class="text-teal-700">*</span></label>
+            <select name="Academic_Head_Name" required class="w-full max-w-sm border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-teal-700 outline-none transition">
+              <option value="">Select...</option>
+              <option value="Sajin">Sajin</option>
+              <option value="Ahad">Ahad</option>
+              <option value="Rajni">Rajni</option>
+              <option value="Azhar">Azhar</option>
+              <option value="Shrey (Qatar)">Shrey (Qatar)</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block font-medium text-gray-800 mb-3">How would you rate your Academic Head on overall leadership and support? <span class="text-teal-700">*</span></label>
+            <div class="flex flex-wrap sm:flex-nowrap gap-2 justify-between w-full">
+               <label class="cursor-pointer flex-1"><input type="radio" name="Academic_Head_Rating" value="1" required class="scale-radio hidden"><div class="h-10 sm:h-12 border border-gray-300 rounded flex justify-center items-center hover:bg-gray-50 transition">1</div></label>
+               <label class="cursor-pointer flex-1"><input type="radio" name="Academic_Head_Rating" value="2" class="scale-radio hidden"><div class="h-10 sm:h-12 border border-gray-300 rounded flex justify-center items-center hover:bg-gray-50 transition">2</div></label>
+               <label class="cursor-pointer flex-1"><input type="radio" name="Academic_Head_Rating" value="3" class="scale-radio hidden"><div class="h-10 sm:h-12 border border-gray-300 rounded flex justify-center items-center hover:bg-gray-50 transition">3</div></label>
+               <label class="cursor-pointer flex-1"><input type="radio" name="Academic_Head_Rating" value="4" class="scale-radio hidden"><div class="h-10 sm:h-12 border border-gray-300 rounded flex justify-center items-center hover:bg-gray-50 transition">4</div></label>
+               <label class="cursor-pointer flex-1"><input type="radio" name="Academic_Head_Rating" value="5" class="scale-radio hidden"><div class="h-10 sm:h-12 border border-gray-300 rounded flex justify-center items-center hover:bg-gray-50 transition">5</div></label>
+               <label class="cursor-pointer flex-1"><input type="radio" name="Academic_Head_Rating" value="6" class="scale-radio hidden"><div class="h-10 sm:h-12 border border-gray-300 rounded flex justify-center items-center hover:bg-gray-50 transition">6</div></label>
+               <label class="cursor-pointer flex-1"><input type="radio" name="Academic_Head_Rating" value="7" class="scale-radio hidden"><div class="h-10 sm:h-12 border border-gray-300 rounded flex justify-center items-center hover:bg-gray-50 transition">7</div></label>
+               <label class="cursor-pointer flex-1"><input type="radio" name="Academic_Head_Rating" value="8" class="scale-radio hidden"><div class="h-10 sm:h-12 border border-gray-300 rounded flex justify-center items-center hover:bg-gray-50 transition">8</div></label>
+               <label class="cursor-pointer flex-1"><input type="radio" name="Academic_Head_Rating" value="9" class="scale-radio hidden"><div class="h-10 sm:h-12 border border-gray-300 rounded flex justify-center items-center hover:bg-gray-50 transition">9</div></label>
+               <label class="cursor-pointer flex-1"><input type="radio" name="Academic_Head_Rating" value="10" class="scale-radio hidden"><div class="h-10 sm:h-12 border border-gray-300 rounded flex justify-center items-center hover:bg-gray-50 transition">10</div></label>
+            </div>
+            <div class="flex justify-between text-xs text-gray-500 mt-2">
+              <span>1 · Poor</span><span>10 · Excellent</span>
+            </div>
+          </div>
+
+          <div>
+            <label class="block font-medium text-gray-800 mb-2">Does your Academic Head provide clear academic guidance and expectations?</label>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+              <label class="border border-gray-200 rounded-lg p-3 flex items-center gap-3 cursor-pointer hover:bg-gray-50 transition"><input type="radio" name="AH_Clear_Guidance" value="Yes" class="w-4 h-4 text-teal-700 focus:ring-teal-700 border-gray-300"> <span>Yes</span></label>
+              <label class="border border-gray-200 rounded-lg p-3 flex items-center gap-3 cursor-pointer hover:bg-gray-50 transition"><input type="radio" name="AH_Clear_Guidance" value="Mostly" class="w-4 h-4 text-teal-700 focus:ring-teal-700 border-gray-300"> <span>Mostly</span></label>
+              <label class="border border-gray-200 rounded-lg p-3 flex items-center gap-3 cursor-pointer hover:bg-gray-50 transition"><input type="radio" name="AH_Clear_Guidance" value="Sometimes" class="w-4 h-4 text-teal-700 focus:ring-teal-700 border-gray-300"> <span>Sometimes</span></label>
+              <label class="border border-gray-200 rounded-lg p-3 flex items-center gap-3 cursor-pointer hover:bg-gray-50 transition"><input type="radio" name="AH_Clear_Guidance" value="No" class="w-4 h-4 text-teal-700 focus:ring-teal-700 border-gray-300"> <span>No</span></label>
+            </div>
+          </div>
+
+          <div>
+            <label class="block font-medium text-gray-800 mb-2">Do you feel heard and supported when you raise concerns?</label>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+              <label class="border border-gray-200 rounded-lg p-3 flex items-center gap-3 cursor-pointer hover:bg-gray-50 transition"><input type="radio" name="AH_Supported" value="Yes" class="w-4 h-4 text-teal-700 focus:ring-teal-700 border-gray-300"> <span>Yes</span></label>
+              <label class="border border-gray-200 rounded-lg p-3 flex items-center gap-3 cursor-pointer hover:bg-gray-50 transition"><input type="radio" name="AH_Supported" value="Mostly" class="w-4 h-4 text-teal-700 focus:ring-teal-700 border-gray-300"> <span>Mostly</span></label>
+              <label class="border border-gray-200 rounded-lg p-3 flex items-center gap-3 cursor-pointer hover:bg-gray-50 transition"><input type="radio" name="AH_Supported" value="Sometimes" class="w-4 h-4 text-teal-700 focus:ring-teal-700 border-gray-300"> <span>Sometimes</span></label>
+              <label class="border border-gray-200 rounded-lg p-3 flex items-center gap-3 cursor-pointer hover:bg-gray-50 transition"><input type="radio" name="AH_Supported" value="No" class="w-4 h-4 text-teal-700 focus:ring-teal-700 border-gray-300"> <span>No</span></label>
+            </div>
+          </div>
+
+          <div>
+            <label class="block font-medium text-gray-800 mb-2">What does your Academic Head do really well? <span class="text-gray-400 font-normal">(optional)</span></label>
+            <textarea name="AH_Does_Well" rows="3" placeholder="Type here..." class="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-teal-700 outline-none transition resize-y"></textarea>
+          </div>
+
+          <div>
+            <label class="block font-medium text-gray-800 mb-2">What could your Academic Head improve? <span class="text-gray-400 font-normal">(optional)</span></label>
+            <textarea name="AH_Improvement" rows="3" placeholder="Type here..." class="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-teal-700 outline-none transition resize-y"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl shadow-sm border border-gray-200 p-6 sm:p-8">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-8 h-8 rounded-full bg-teal-800 text-white flex items-center justify-center font-bold">3</div>
+          <h2 class="text-xl font-bold text-[#1a2e2b]">Branch Manager</h2>
+        </div>
+
+        <div class="space-y-6 ml-0 sm:ml-11">
+          <div>
+            <label class="block font-medium text-gray-800 mb-3">How would you rate your Branch Manager(s) on day-to-day operations and support? <span class="text-teal-700">*</span></label>
+            <div class="flex flex-wrap sm:flex-nowrap gap-2 justify-between w-full">
+               <label class="cursor-pointer flex-1"><input type="radio" name="BM_Rating" value="1" required class="scale-radio hidden"><div class="h-10 sm:h-12 border border-gray-300 rounded flex justify-center items-center hover:bg-gray-50 transition">1</div></label>
+               <label class="cursor-pointer flex-1"><input type="radio" name="BM_Rating" value="2" class="scale-radio hidden"><div class="h-10 sm:h-12 border border-gray-300 rounded flex justify-center items-center hover:bg-gray-50 transition">2</div></label>
+               <label class="cursor-pointer flex-1"><input type="radio" name="BM_Rating" value="3" class="scale-radio hidden"><div class="h-10 sm:h-12 border border-gray-300 rounded flex justify-center items-center hover:bg-gray-50 transition">3</div></label>
+               <label class="cursor-pointer flex-1"><input type="radio" name="BM_Rating" value="4" class="scale-radio hidden"><div class="h-10 sm:h-12 border border-gray-300 rounded flex justify-center items-center hover:bg-gray-50 transition">4</div></label>
+               <label class="cursor-pointer flex-1"><input type="radio" name="BM_Rating" value="5" class="scale-radio hidden"><div class="h-10 sm:h-12 border border-gray-300 rounded flex justify-center items-center hover:bg-gray-50 transition">5</div></label>
+               <label class="cursor-pointer flex-1"><input type="radio" name="BM_Rating" value="6" class="scale-radio hidden"><div class="h-10 sm:h-12 border border-gray-300 rounded flex justify-center items-center hover:bg-gray-50 transition">6</div></label>
+               <label class="cursor-pointer flex-1"><input type="radio" name="BM_Rating" value="7" class="scale-radio hidden"><div class="h-10 sm:h-12 border border-gray-300 rounded flex justify-center items-center hover:bg-gray-50 transition">7</div></label>
+               <label class="cursor-pointer flex-1"><input type="radio" name="BM_Rating" value="8" class="scale-radio hidden"><div class="h-10 sm:h-12 border border-gray-300 rounded flex justify-center items-center hover:bg-gray-50 transition">8</div></label>
+               <label class="cursor-pointer flex-1"><input type="radio" name="BM_Rating" value="9" class="scale-radio hidden"><div class="h-10 sm:h-12 border border-gray-300 rounded flex justify-center items-center hover:bg-gray-50 transition">9</div></label>
+               <label class="cursor-pointer flex-1"><input type="radio" name="BM_Rating" value="10" class="scale-radio hidden"><div class="h-10 sm:h-12 border border-gray-300 rounded flex justify-center items-center hover:bg-gray-50 transition">10</div></label>
+            </div>
+            <div class="flex justify-between text-xs text-gray-500 mt-2">
+              <span>1 · Poor</span><span>10 · Excellent</span>
+            </div>
+          </div>
+
+          <div>
+            <label class="block font-medium text-gray-800 mb-2">Does the Branch Manager resolve operational issues promptly?</label>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+              <label class="border border-gray-200 rounded-lg p-3 flex items-center gap-3 cursor-pointer hover:bg-gray-50 transition"><input type="radio" name="BM_Resolves_Promptly" value="Yes" class="w-4 h-4 text-teal-700 focus:ring-teal-700 border-gray-300"> <span>Yes</span></label>
+              <label class="border border-gray-200 rounded-lg p-3 flex items-center gap-3 cursor-pointer hover:bg-gray-50 transition"><input type="radio" name="BM_Resolves_Promptly" value="Mostly" class="w-4 h-4 text-teal-700 focus:ring-teal-700 border-gray-300"> <span>Mostly</span></label>
+              <label class="border border-gray-200 rounded-lg p-3 flex items-center gap-3 cursor-pointer hover:bg-gray-50 transition"><input type="radio" name="BM_Resolves_Promptly" value="Sometimes" class="w-4 h-4 text-teal-700 focus:ring-teal-700 border-gray-300"> <span>Sometimes</span></label>
+              <label class="border border-gray-200 rounded-lg p-3 flex items-center gap-3 cursor-pointer hover:bg-gray-50 transition"><input type="radio" name="BM_Resolves_Promptly" value="No" class="w-4 h-4 text-teal-700 focus:ring-teal-700 border-gray-300"> <span>No</span></label>
+            </div>
+          </div>
+
+          <div>
+            <label class="block font-medium text-gray-800 mb-2">Do you feel respected and valued by your Branch Manager?</label>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+              <label class="border border-gray-200 rounded-lg p-3 flex items-center gap-3 cursor-pointer hover:bg-gray-50 transition"><input type="radio" name="BM_Respected" value="Yes" class="w-4 h-4 text-teal-700 focus:ring-teal-700 border-gray-300"> <span>Yes</span></label>
+              <label class="border border-gray-200 rounded-lg p-3 flex items-center gap-3 cursor-pointer hover:bg-gray-50 transition"><input type="radio" name="BM_Respected" value="Mostly" class="w-4 h-4 text-teal-700 focus:ring-teal-700 border-gray-300"> <span>Mostly</span></label>
+              <label class="border border-gray-200 rounded-lg p-3 flex items-center gap-3 cursor-pointer hover:bg-gray-50 transition"><input type="radio" name="BM_Respected" value="Sometimes" class="w-4 h-4 text-teal-700 focus:ring-teal-700 border-gray-300"> <span>Sometimes</span></label>
+              <label class="border border-gray-200 rounded-lg p-3 flex items-center gap-3 cursor-pointer hover:bg-gray-50 transition"><input type="radio" name="BM_Respected" value="No" class="w-4 h-4 text-teal-700 focus:ring-teal-700 border-gray-300"> <span>No</span></label>
+            </div>
+          </div>
+
+          <div>
+            <label class="block font-medium text-gray-800 mb-2">Anything to add about your Branch Manager? <span class="text-gray-400 font-normal">(optional)</span></label>
+            <textarea name="BM_Additional_Notes" rows="3" placeholder="Type here..." class="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-teal-700 outline-none transition resize-y"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl shadow-sm border border-gray-200 p-6 sm:p-8">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-8 h-8 rounded-full bg-teal-800 text-white flex items-center justify-center font-bold">4</div>
+          <h2 class="text-xl font-bold text-[#1a2e2b]">Central Operations Team</h2>
+        </div>
+
+        <div class="space-y-6 ml-0 sm:ml-11">
+          <div>
+            <label class="block font-medium text-gray-800 mb-3">How would you rate the Central Operations Team on responsiveness and support? <span class="text-teal-700">*</span></label>
+            <div class="flex flex-wrap sm:flex-nowrap gap-2 justify-between w-full">
+               <label class="cursor-pointer flex-1"><input type="radio" name="Ops_Rating" value="1" required class="scale-radio hidden"><div class="h-10 sm:h-12 border border-gray-300 rounded flex justify-center items-center hover:bg-gray-50 transition">1</div></label>
+               <label class="cursor-pointer flex-1"><input type="radio" name="Ops_Rating" value="2" class="scale-radio hidden"><div class="h-10 sm:h-12 border border-gray-300 rounded flex justify-center items-center hover:bg-gray-50 transition">2</div></label>
+               <label class="cursor-pointer flex-1"><input type="radio" name="Ops_Rating" value="3" class="scale-radio hidden"><div class="h-10 sm:h-12 border border-gray-300 rounded flex justify-center items-center hover:bg-gray-50 transition">3</div></label>
+               <label class="cursor-pointer flex-1"><input type="radio" name="Ops_Rating" value="4" class="scale-radio hidden"><div class="h-10 sm:h-12 border border-gray-300 rounded flex justify-center items-center hover:bg-gray-50 transition">4</div></label>
+               <label class="cursor-pointer flex-1"><input type="radio" name="Ops_Rating" value="5" class="scale-radio hidden"><div class="h-10 sm:h-12 border border-gray-300 rounded flex justify-center items-center hover:bg-gray-50 transition">5</div></label>
+               <label class="cursor-pointer flex-1"><input type="radio" name="Ops_Rating" value="6" class="scale-radio hidden"><div class="h-10 sm:h-12 border border-gray-300 rounded flex justify-center items-center hover:bg-gray-50 transition">6</div></label>
+               <label class="cursor-pointer flex-1"><input type="radio" name="Ops_Rating" value="7" class="scale-radio hidden"><div class="h-10 sm:h-12 border border-gray-300 rounded flex justify-center items-center hover:bg-gray-50 transition">7</div></label>
+               <label class="cursor-pointer flex-1"><input type="radio" name="Ops_Rating" value="8" class="scale-radio hidden"><div class="h-10 sm:h-12 border border-gray-300 rounded flex justify-center items-center hover:bg-gray-50 transition">8</div></label>
+               <label class="cursor-pointer flex-1"><input type="radio" name="Ops_Rating" value="9" class="scale-radio hidden"><div class="h-10 sm:h-12 border border-gray-300 rounded flex justify-center items-center hover:bg-gray-50 transition">9</div></label>
+               <label class="cursor-pointer flex-1"><input type="radio" name="Ops_Rating" value="10" class="scale-radio hidden"><div class="h-10 sm:h-12 border border-gray-300 rounded flex justify-center items-center hover:bg-gray-50 transition">10</div></label>
+            </div>
+            <div class="flex justify-between text-xs text-gray-500 mt-2">
+              <span>1 · Poor</span><span>10 · Excellent</span>
+            </div>
+          </div>
+
+          <div>
+            <label class="block font-medium text-gray-800 mb-2">Are your classroom and logistical needs (materials, scheduling, facilities) handled efficiently?</label>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+              <label class="border border-gray-200 rounded-lg p-3 flex items-center gap-3 cursor-pointer hover:bg-gray-50 transition"><input type="radio" name="Ops_Logistics" value="Yes" class="w-4 h-4 text-teal-700 focus:ring-teal-700 border-gray-300"> <span>Yes</span></label>
+              <label class="border border-gray-200 rounded-lg p-3 flex items-center gap-3 cursor-pointer hover:bg-gray-50 transition"><input type="radio" name="Ops_Logistics" value="Mostly" class="w-4 h-4 text-teal-700 focus:ring-teal-700 border-gray-300"> <span>Mostly</span></label>
+              <label class="border border-gray-200 rounded-lg p-3 flex items-center gap-3 cursor-pointer hover:bg-gray-50 transition"><input type="radio" name="Ops_Logistics" value="Sometimes" class="w-4 h-4 text-teal-700 focus:ring-teal-700 border-gray-300"> <span>Sometimes</span></label>
+              <label class="border border-gray-200 rounded-lg p-3 flex items-center gap-3 cursor-pointer hover:bg-gray-50 transition"><input type="radio" name="Ops_Logistics" value="No" class="w-4 h-4 text-teal-700 focus:ring-teal-700 border-gray-300"> <span>No</span></label>
+            </div>
+          </div>
+
+          <div>
+            <label class="block font-medium text-gray-800 mb-2">How would you describe your overall experience dealing with the Operations Team?</label>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+              <label class="border border-gray-200 rounded-lg p-3 flex items-center gap-3 cursor-pointer hover:bg-gray-50 transition"><input type="radio" name="Ops_Experience" value="Excellent" class="w-4 h-4 text-teal-700 focus:ring-teal-700 border-gray-300"> <span>Excellent</span></label>
+              <label class="border border-gray-200 rounded-lg p-3 flex items-center gap-3 cursor-pointer hover:bg-gray-50 transition"><input type="radio" name="Ops_Experience" value="Good" class="w-4 h-4 text-teal-700 focus:ring-teal-700 border-gray-300"> <span>Good</span></label>
+              <label class="border border-gray-200 rounded-lg p-3 flex items-center gap-3 cursor-pointer hover:bg-gray-50 transition"><input type="radio" name="Ops_Experience" value="Average" class="w-4 h-4 text-teal-700 focus:ring-teal-700 border-gray-300"> <span>Average</span></label>
+              <label class="border border-gray-200 rounded-lg p-3 flex items-center gap-3 cursor-pointer hover:bg-gray-50 transition"><input type="radio" name="Ops_Experience" value="Poor" class="w-4 h-4 text-teal-700 focus:ring-teal-700 border-gray-300"> <span>Poor</span></label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl shadow-sm border border-gray-200 p-6 sm:p-8">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-8 h-8 rounded-full bg-teal-800 text-white flex items-center justify-center font-bold">5</div>
+          <h2 class="text-xl font-bold text-[#1a2e2b]">Open feedback</h2>
+        </div>
+
+        <div class="space-y-6 ml-0 sm:ml-11">
+          <div>
+            <label class="block font-medium text-gray-800 mb-2">What is the one thing PW Gulf does really well for its teachers?</label>
+            <textarea name="Feedback_Does_Well" rows="3" placeholder="Type here..." class="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-teal-700 outline-none transition resize-y"></textarea>
+          </div>
+          <div>
+            <label class="block font-medium text-gray-800 mb-2">What is the one thing you would change about working at PW Gulf if you could?</label>
+            <textarea name="Feedback_To_Change" rows="3" placeholder="Type here..." class="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-teal-700 outline-none transition resize-y"></textarea>
+          </div>
+          <div>
+            <label class="block font-medium text-gray-800 mb-2">Any other feedback or suggestions for leadership? <span class="text-gray-400 font-normal">(optional)</span></label>
+            <textarea name="Feedback_Suggestions" rows="3" placeholder="Type here..." class="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-teal-700 outline-none transition resize-y"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl shadow-sm border border-gray-200 p-6 sm:p-8">
+        <div class="flex items-center gap-3 mb-2">
+          <div class="w-8 h-8 rounded-full bg-teal-800 text-white flex items-center justify-center font-bold">6</div>
+          <h2 class="text-xl font-bold text-[#1a2e2b]">Optional follow-up</h2>
+        </div>
+        <p class="text-sm text-gray-500 mb-6 ml-11">Only fill this in if you <em>want</em> to be contacted. Leaving it blank keeps you fully anonymous.</p>
+
+        <div class="ml-0 sm:ml-11">
+          <label class="block font-medium text-gray-800 mb-2">If you'd be open to a follow-up conversation, leave your name or email. <span class="text-gray-400 font-normal">(optional)</span></label>
+          <input type="text" name="FollowUp_Contact" placeholder="Name or email — or leave blank" class="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-teal-700 outline-none transition">
+        </div>
+      </div>
+
+      <div class="mt-8">
+        <button type="submit" id="submitBtn" class="w-full bg-[#116e5f] hover:bg-[#0c5448] text-white font-bold text-lg py-4 px-6 rounded-xl transition duration-200 shadow-md">
+          Submit feedback
+        </button>
+        <p class="text-center text-gray-500 text-sm mt-4">No login. No tracking. One submission, then you're done.</p>
+        <div id="statusMessage" class="text-center font-medium mt-3 text-lg"></div>
+      </div>
+
+    </form>
+  </div>
+
+  <script>
+    // --- 1. Dynamic Region/Centre Logic ---
+    const centresMap = {
+      "GCC Online": ["GCC Online"],
+      "UAE Offline": [
+        "Abu Shagara (Code A)", "Muweilah (Code W)", "Hamdan (Code I)", 
+        "Bur Dubai (Code F)", "Qusais (Code C)", "International City (Code M)", 
+        "Gardens / JLT (Code H)", "Mussafah (Code K)", "Nahda Dubai (Code D)", 
+        "Nahda Sharjah (Code B)"
+      ],
+      "Oman Offline": ["PWG-Oman-Wadi Kabir", "PWG-Oman-Ghubra"],
+      "Saudi Offline": ["Al Alia International School", "Jubail","Jeddah","Dammam"],
+      "Qatar Offline": ["DPS Modern Indian School", "DPS Monarch International School"]
+    };
+
+    const regionSelect = document.getElementById('region');
+    const centreSelect = document.getElementById('centre');
+
+    regionSelect.addEventListener('change', function() {
+      centreSelect.innerHTML = '<option value="">Select Centre...</option>';
+      const selectedRegion = this.value;
+
+      if (selectedRegion && centresMap[selectedRegion]) {
+        centresMap[selectedRegion].forEach(function(centre) {
+          const option = document.createElement('option');
+          option.value = centre;
+          option.textContent = centre;
+          centreSelect.appendChild(option);
+        });
+        centreSelect.disabled = false;
+        centreSelect.classList.remove('bg-gray-50', 'opacity-60');
+      } else {
+        centreSelect.disabled = true;
+        centreSelect.classList.add('bg-gray-50', 'opacity-60');
+        centreSelect.innerHTML = '<option value="">Select Region first...</option>';
+      }
+    });
+
+    // --- 2. Form Submission Logic ---
+    document.getElementById('teacherSurveyForm').addEventListener('submit', function(e) {
+      e.preventDefault(); 
+      
+      const btn = document.getElementById('submitBtn');
+      const status = document.getElementById('statusMessage');
+      
+      btn.textContent = 'Submitting...';
+      btn.disabled = true;
+      btn.classList.add('opacity-50');
+      status.textContent = '';
+      status.className = "text-center font-medium mt-3";
+
+      // IMPORTANT: Since "Subjects" are checkboxes, we need to gather multiple values together
+      const formElement = e.target;
+      const formData = new FormData(formElement);
+      const urlEncodedData = new URLSearchParams();
+      const subjectsArray = [];
+
+      for (let [key, value] of formData.entries()) {
+        if (key === 'Subject') {
+          subjectsArray.push(value); // Collect all checked subjects
+        } else {
+          urlEncodedData.append(key, value);
+        }
+      }
+      
+      // Add the combined subjects back as a single comma-separated string
+      if (subjectsArray.length > 0) {
+        urlEncodedData.append('Subject', subjectsArray.join(', '));
+      }
+
+      // --- REPLACE THIS URL WITH YOUR GOOGLE WEB APP URL ---
+      const GOOGLE_SCRIPT_URL = 'https://script.google.com/a/macros/pw.live/s/AKfycbx0tlU8EqDVg_MWI7GMFcFnR2SvvBrjO_8hbcEKFR7fylJayMqJvl0RJw1H3BHTsZl0/exec'; 
+
+      fetch(GOOGLE_SCRIPT_URL, { 
+        method: 'POST', 
+        body: urlEncodedData 
+      })
+      .then(response => response.json())
+      .then(data => {
+        if(data.result === 'success') {
+          status.textContent = 'Success! Your response has been securely recorded.';
+          status.classList.add('text-teal-700');
+          formElement.reset(); // Clear form
+          centreSelect.disabled = true; 
+          centreSelect.classList.add('bg-gray-50', 'opacity-60');
+          centreSelect.innerHTML = '<option value="">Select Region first...</option>';
+        } else {
+          throw new Error('Script returned error');
+        }
+      })
+      .catch(error => {
+        status.textContent = 'Error submitting form. Please try again.';
+        status.classList.add('text-red-600');
+        console.error('Error:', error.message);
+      })
+      .finally(() => {
+        btn.textContent = 'Submit feedback';
+        btn.disabled = false;
+        btn.classList.remove('opacity-50');
+      });
+    });
+  </script>
+</body>
+</html>
